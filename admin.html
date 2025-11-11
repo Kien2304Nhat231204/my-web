@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trang quản trị</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {text-align:center; font-family:Segoe UI,sans-serif; background:#f4f4f4; margin:0; padding:0;}
+.container {max-width:700px; margin:20px auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+input {margin:5px; padding:8px; width:200px;}
+button {padding:8px 20px; margin-top:5px; cursor:pointer;}
+hr {margin:20px 0;}
+table {width:100%; border-collapse:collapse;}
+th, td {border:1px solid #ccc; padding:8px; text-align:left;}
+th {background:#003566; color:white;}
+.user-table button {background:#d9534f; color:white; border:none; border-radius:4px;}
+.user-table button:hover {background:#c9302c;}
+.modal {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; z-index:999;}
+.modal-content {background:#fff; padding:20px; border-radius:10px; max-width:90%; max-height:80vh; overflow:auto; margin:50px auto; position:relative;}
+.close-btn {position:absolute; top:10px; right:10px; background:#555; color:#fff; border:none; border-radius:4px; padding:5px 10px; cursor:pointer;}
+.close-btn:hover {background:#333;}
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Xin chào, Quản trị viên</h2>
+<button onclick="goHome()">Trang chủ</button>
+  <h3>Cấp quyền bác sĩ</h3>
+  <div>
+    <input type="text" id="docName" placeholder="Tên bác sĩ">
+    <input type="text" id="docPhone" placeholder="Số điện thoại">
+    <input type="password" id="docPass" placeholder="Mật khẩu (tùy chọn)">
+    <br>
+    <button onclick="grantDoctorRole(); displayUsers();">Cấp quyền</button>
+  </div>
+  <hr>
+
+  <button onclick="showPatientsList()">📋 Danh sách bệnh nhân</button>
+  <hr>
+
+  <h3>Danh sách người dùng hiện tại</h3>
+  <div id="userList"></div>
+</div>
+
+<!-- Modal danh sách bệnh nhân -->
+<div id="patientListModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closePatientList()">Đóng ✖</button>
+    <h2>Danh sách bệnh nhân & hồ sơ khám</h2>
+    <div id="patientListContainer"></div>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  checkAdmin();
+  displayUsers();
+});
+
+function displayUsers(){
+  const users = loadData("users") || [];
+  const container = $("userList");
+  let html = `<table class="user-table">
+    <tr><th>Tên</th><th>SĐT</th><th>Vai trò</th><th>Thao tác</th></tr>`;
+  users.forEach(u => {
+    html += `<tr>
+      <td>${u.name}</td>
+      <td>${u.phone}</td>
+      <td>${u.role}</td>
+      <td><button onclick="deleteUser('${u.phone}')">Xóa</button></td>
+    </tr>`;
+  });
+  html += "</table>";
+  container.innerHTML = html;
+}
+
+function deleteUser(phone){
+  if(!confirm("Bạn có chắc chắn muốn xóa tài khoản này không?")) return;
+  let users = loadData("users") || [];
+  users = users.filter(u => u.phone !== phone);
+  saveData("users", users);
+  alert("Đã xóa tài khoản thành công!");
+  displayUsers();
+}
+
+// Popup danh sách bệnh nhân
+function showPatientsList(){
+  const patients = loadData("users").filter(u => u.role === "patient");
+  const appointments = loadData("appointments") || [];
+  const container = $("patientListContainer");
+
+  if(patients.length === 0){
+    container.innerHTML = "<p>Chưa có bệnh nhân nào.</p>";
+  } else {
+    let html = `<table>
+      <tr><th>Tên</th><th>SĐT</th><th>Lịch khám</th></tr>`;
+    patients.forEach(p => {
+      const patientAppointments = appointments.filter(a => a.phone === p.phone);
+      let appointmentHtml = patientAppointments.length === 0 ? "-" :
+        "<ul>" + patientAppointments.map(a => `<li>${a.date} — ${a.spec} — Bác sĩ: ${a.doctor || "-"}</li>`).join("") + "</ul>";
+      html += `<tr>
+        <td>${p.name}</td>
+        <td>${p.phone}</td>
+        <td>${appointmentHtml}</td>
+      </tr>`;
+    });
+    html += "</table>";
+    container.innerHTML = html;
+  }
+
+  $("patientListModal").style.display = "block";
+}
+
+function closePatientList(){
+  $("patientListModal").style.display = "none";
+}
+</script>
+</body>
+</html>

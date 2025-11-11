@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trang bác sĩ</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<style>
+body {
+  font-family:"Segoe UI",sans-serif;
+  background: linear-gradient(135deg,#003566,#00b4d8);
+  color:white;
+  margin:0;
+  padding:0;
+  text-align: center;  
+}
+header, footer {text-align:center; padding:20px;}
+.doctor-info {text-align:center; margin:10px 0 20px; font-size:18px;}
+.table-container {width:90%; max-width:900px; margin:auto; background:#141414; border-radius:12px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.5);}
+table {width:100%; border-collapse:collapse; color:white;}
+th, td {border-bottom:1px solid #333; padding:10px; text-align:left;}
+th {color:#00b4d8;}
+input {padding:4px; margin:2px 0; border-radius:4px; border:1px solid #ccc;}
+button {margin-left:4px; padding:4px 8px; background:#00b4d8; border:none; border-radius:4px; color:#fff; cursor:pointer;}
+button:hover {background:#0077a3;}
+</style>
+</head>
+<body>
+<header><h1>Trang bác sĩ</h1></header>
+<h2 id="doctorInfo"></h2>
+<div class="table-container">
+  <h2>Danh sách bệnh nhân đang chờ</h2>
+  <div id="patientList"></div>
+</div>
+<button onclick="goHome()">Trang chủ</button>
+<footer>&copy; 2025 Bệnh viện Y Alandes</footer>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  loadDoctorDashboard();
+});
+</script>
+</body>
+</html>

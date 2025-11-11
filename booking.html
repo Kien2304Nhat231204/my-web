@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đặt lịch khám</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<style>
+body {
+  font-family:"Segoe UI",sans-serif;
+  background: linear-gradient(135deg,#003566,#00b4d8);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+header, footer {
+  text-align: center;
+  padding: 20px;
+}
+header h1 {color:#00b4d8;}
+nav {text-align:center;margin-bottom:30px;}
+nav a {
+  color:white;
+  text-decoration:none;
+  margin: 0 10px;
+  font-weight:500;
+}
+nav a:hover {text-decoration:underline;}
+
+/* Form card */
+.booking-card {
+  background:#141414;
+  max-width:500px;
+  margin: auto;
+  padding:30px 25px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
+}
+.booking-card h2 {
+  color:#00b4d8;
+  text-align:center;
+  margin-bottom:20px;
+}
+.booking-card label {
+  display:block;
+  margin:12px 0 5px;
+}
+.booking-card input,
+.booking-card select,
+.booking-card textarea {
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:none;
+  margin-bottom:10px;
+}
+.booking-card textarea {resize:none;}
+.booking-card button {
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  background:#00b4d8;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+.booking-card button:hover {background:#0096ff;}
+
+@media(max-width:600px){
+  .booking-card {padding:20px 15px;}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Đặt lịch khám</h1>
+</header>
+<nav>
+  <a href="index.html">Trang chủ</a>
+  <a href="login.html">Đăng nhập</a>
+</nav>
+<main>
+  <div class="booking-card">
+    <h2>Thông tin đặt lịch</h2>
+    <form onsubmit="bookAppointmentFromForm();return false;">
+
+      <label>Họ tên</label>
+      <input id="bName" placeholder="Nhập họ tên" required>
+      <label>Số điện thoại</label>
+      <input id="bPhone" placeholder="Nhập số điện thoại" required>
+      <label>Ngày khám</label>
+      <input id="bDate" type="date" required>
+      <label>Chuyên khoa</label>
+      <select id="bSpec">
+        <option value="Sản phụ khoa">Sản phụ khoa</option>
+        <option value="Ngoại khoa">Ngoại khoa</option>
+        <option value="Nội tổng hợp">Nội tổng hợp</option>
+        <option value="Nhi khoa">Nhi khoa</option>
+        <option value="Nội tim mạch">Nội tim mạch</option>
+      </select>
+
+      <script>
+      const specSelect = document.getElementById("bSpec");
+      const doctorContainer = document.createElement("div");
+      doctorContainer.id = "doctorFiltered";
+      document.querySelector(".booking-card form").appendChild(doctorContainer);
+
+      const allDoctors = [
+        { name: "BS. Trần Thị Thanh Thảo", spec: "Sản phụ khoa" },
+        { name: "BS. Lê Văn Lâm", spec: "Sản phụ khoa" },
+        { name: "BS. Nguyễn Anh Tuấn", spec: "Ngoại khoa" },
+        { name: "BS. Võ Thị Ánh Xuân", spec: "Ngoại khoa" },
+        { name: "BS. Masic Vera", spec: "Nội tổng hợp" },
+        { name: "BS. Phoguster", spec: "Nội tổng hợp" },
+        { name: "BS. Hà Thu Hương", spec: "Nhi khoa" },
+        { name: "BS. Nguyễn Thị Vân", spec: "Nhi khoa" },
+        { name: "BS. Vũ Minh Trung", spec: "Nội tim mạch" },
+        { name: "BS. Nguyễn Ngọc Diệp", spec: "Nội tim mạch" }
+      ];
+
+      specSelect.addEventListener("change", () => {
+        const selected = specSelect.value;
+        const filtered = allDoctors.filter(d => d.spec === selected);
+        if (filtered.length > 0) {
+          doctorContainer.innerHTML =
+            "<label>Chọn bác sĩ</label>" +
+            `<select id="bDoctor">
+              ${filtered.map(d => `<option>${d.name}</option>`).join("")}
+            </select>`;
+        } else {
+          doctorContainer.innerHTML = "";
+        }
+      });
+      </script>
+
+      <label>Ghi chú</label>
+      <textarea id="bNote" rows="3" placeholder="Nhập ghi chú nếu có"></textarea>
+      <button type="submit">Đặt lịch</button>
+    </form>
+  </div>
+</main>
+<footer>&copy; 2025 Bệnh viện Y Alandes</footer>
+</body>
+</html>

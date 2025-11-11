@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trang bệnh nhân</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<style>
+body {font-family:"Segoe UI",sans-serif; margin:0; padding:0; background:#f4f4f4;}
+.container {width:90%; max-width:900px; margin:20px auto; background:white; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+h2,h3{color:#003566;}
+table {width:100%; border-collapse:collapse;}
+th, td {border:1px solid #ccc; padding:8px; text-align:left;}
+th {background:#003566; color:white;}
+.doctor-card {display:flex; align-items:center; background:#e0e0e0; margin:10px 0; padding:10px; border-radius:8px;}
+.doctor-card img {width:80px; height:80px; border-radius:50%; margin-right:10px;}
+.doctor-card button {margin-top:5px;}
+</style>
+</head>
+<body onload="checkPatient(); loadPatientPage();">
+  <div class="container">
+
+    <!-- Xin chào + Trang chủ -->
+    <div class="header">
+      <h2>Xin chào <span id="userName"></span>!</h2>
+      <button onclick="goHome()">Trang chủ</button>
+      <button onclick="goHome()">Chỉnh sửa thông tin cá nhân</button>
+    </div>
+
+    <!-- Thông tin bệnh nhân -->
+    <div class="patient-info">
+      <h3>Thông tin bệnh nhân</h3>
+      <p>Tên: <span id="infoName"></span></p>
+      <p>SĐT: <span id="infoPhone"></span></p>
+      <p>Quyền: <span id="infoRole"></span></p>
+    </div>
+
+    <!-- Lịch khám -->
+    <div class="appointments">
+      <h3>Lịch khám của tôi</h3>
+      <div id="myAppointments">Chưa có lịch khám nào.</div>
+    </div>
+
+    <!-- Danh sách bác sĩ -->
+    <div class="doctor-list">
+      <h3>Danh sách bác sĩ</h3>
+      <div id="doctorList"></div>
+    </div>
+
+  </div>
+</body>
+
+  <!-- Form đặt lịch -->
+  <div id="doctorBookingForm" style="display:none; border:1px solid #333; padding:10px; margin-top:10px;">
+    <h3>Đặt lịch với: <span id="formDoctorName"></span></h3>
+    <label>Ngày khám: <input type="date" id="doctorDate"></label><br><br>
+    <label>Tình trạng sức khỏe / ghi chú: <input type="text" id="doctorNote" placeholder="Mô tả tình trạng sức khỏe"></label><br><br>
+    <button onclick="submitDoctorBooking()">Đặt lịch</button>
+    <button onclick="cancelDoctorBooking()">Hủy</button>
+  </div>
+
+  <!-- Thông tin bệnh viện -->
+  <div id="hospitalInfo" style="margin-top:30px; border-top:1px solid #ccc; padding-top:10px;">
+    <h3>Bệnh viện Y Alades</h3>
+    <p><strong>📍 Địa chỉ:</strong> Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội</p>
+    <p><strong>☎️ Hotline:</strong> (024) 38542 3758</p>
+    <p><strong>✉️ Email:</strong> alandes@gmail.com</p>
+    <p><strong>⏰ Giờ làm việc:</strong> Thứ 2 - Thứ 7: 6:00-22:00</p>
+  </div>
+</div>
+</body>
+</html>

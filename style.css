@@ -1,0 +1,538 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Segoe UI",sans-serif;background-color:#0b0c10;color:#fff;}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  background:linear-gradient(90deg,#003566,#00b4d8);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 5%;flex-wrap:wrap;
+}
+.logo{font-size:1.4rem;font-weight:bold;color:white;}
+.nav-links a{
+  color:white;text-decoration:none;margin:0 10px;font-weight:500;
+}
+.nav-links a:hover{text-decoration:underline;}
+.btn,.btn-login,.btn-signup{
+  padding:8px 15px;border-radius:5px;text-decoration:none;margin-left:10px;color:white;font-weight:bold;
+}
+.btn{background:#ff6600;}
+.btn:hover{background:#ff8c1a;}
+.btn-login{background:#0077b6;}
+.btn-login:hover{background:#0096c7;}
+.btn-signup{background:#00b4d8;}
+.btn-signup:hover{background:#0096ff;}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(to right,#003566,#00b4d8);
+  text-align:center;padding:80px 20px;color:white;
+}
+.hero-content h1{font-size:2.5rem;margin-bottom:10px;}
+.hero-content p{font-size:1.1rem;margin-bottom:20px;}
+.btn-primary{
+  background:#ff6600;color:white;padding:12px 25px;border-radius:6px;
+  text-decoration:none;font-weight:bold;
+}
+.btn-primary:hover{background:#ff8533;}
+.btn-signup-hero{
+  background:#00b4d8;color:white;padding:12px 25px;border-radius:6px;text-decoration:none;font-weight:bold;margin-left:10px;
+}
+.btn-signup-hero:hover{background:#0096ff;}
+
+/* ===== DOCTOR SECTION ===== */
+.doctors-section{
+  background:#141414;padding:60px 5%;text-align:center;
+}
+.doctors-section h2{font-size:2rem;margin-bottom:30px;color:#00b4d8;}
+.doctor-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;justify-items:center;
+}
+.doctor-card{
+  background:#1e1e1e;border-radius:12px;padding:20px;text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.4);
+  transition:transform 0.3s ease;
+}
+.doctor-card:hover{transform:translateY(-5px);}
+.doctor-card img{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  border:3px solid #00b4d8;margin-bottom:15px;cursor:pointer;
+}
+.doctor-card h3{font-size:1.1rem;margin-bottom:8px;}
+.doctor-card p{color:#ccc;margin-bottom:10px;}
+.btn-book{
+  background:#0077b6;color:white;text-decoration:none;
+  padding:8px 16px;border-radius:6px;display:inline-block;
+}
+.btn-book:hover{background:#0096c7;}
+
+/* ===== MODAL BÁC SĨ ===== */
+.modal {
+  display:none;
+  position:fixed;
+  z-index:1000;
+  left:0;top:0;
+  width:100%;height:100%;
+  overflow:auto;
+  background: rgba(0,0,0,0.7);
+  animation: fadeIn 0.3s ease;
+}
+.modal-content {
+  background:#1e1e1e;
+  margin:10% auto;
+  padding:20px;
+  border-radius:12px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  position:relative;
+  animation: slideUp 0.3s ease;
+}
+.modal-content img {
+  width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid #00b4d8;margin-bottom:15px;
+}
+.modal-content h3{margin-bottom:10px;color:#00b4d8;}
+.modal-content p{color:#ccc;margin-bottom:10px;}
+.close {
+  position:absolute;top:10px;right:15px;
+  color:#fff;font-size:24px;font-weight:bold;
+  cursor:pointer;
+}
+.btn-book-modal{
+  background:#0077b6;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;
+}
+.btn-book-modal:hover{background:#0096c7;}
+@keyframes slideUp {from{transform:translateY(50px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#003566;color:white;text-align:center;
+  padding:20px;font-size:0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero-content h1{font-size:1.8rem;}
+  .doctor-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
+  .navbar{flex-direction:column;gap:10px;}
+}
+/* ===== CHUNG ===== */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg,#003566,#00b4d8);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== FORM LOGIN/REGISTER ===== */
+.form-container {
+  background: #141414;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  width: 300px;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #00b4d8;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #00b4d8;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background: #0096ff;
+}
+
+.form-container a {
+  color: #00b4d8;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Màu xanh đồng nhất */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #003566, #00b4d8);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 50px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+button {
+  background: #00b4d8;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background: #0096ff;
+}
+/* ===== ADMIN FORM ===== */
+.admin-container {
+  background: linear-gradient(135deg, #003566, #00b4d8);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  width: 350px;
+  text-align: center;
+  color: #fff;
+}
+
+.admin-form h2 {
+  color: #00b4d8;
+  margin-bottom: 20px;
+}
+
+.admin-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+.admin-form button {
+  background: #00b4d8;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.admin-form button:hover {
+  background: #0096ff;
+}
+/* ===== DOCTOR DASHBOARD ===== */
+.doctor-dashboard {
+  background: #0b0c10;
+  color: white;
+  min-height: 100vh;
+  padding: 50px 5%;
+}
+
+.doctor-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.doctor-header h2 {
+  color: #00b4d8;
+  margin-bottom: 10px;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+.patient-table th, .patient-table td {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+  text-align: center;
+}
+
+.patient-table th {
+  background: #003566;
+  color: white;
+}
+
+.patient-table tr:hover {
+  background: rgba(0,180,216,0.1);
+}
+
+.patient-table td {
+  color: #ccc;
+}
+/* ===== SERVICES ===== */
+.services-section {
+  background: #0b0c10;
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.services-section h2 {
+  color: #00b4d8;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cột */
+  gap: 40px 60px; /* khoảng cách giữa hàng và cột */
+  justify-items: center;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 30px 20px;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.service-card img {
+  width: 55px; /* logo nhỏ lại */
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.service-card img:hover {
+  transform: scale(1.1);
+}
+
+.service-card h3 {
+  color: #00b4d8;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr; /* 1 cột trên mobile */
+  }
+  .service-card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+.user-table button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.user-table button:hover {
+  background-color: #c0392b;
+}
+/* ===== POPUP DANH SÁCH BỆNH NHÂN ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* ===== BẢNG DANH SÁCH ===== */
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.patient-table th, .patient-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.patient-table th {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+}
+
+.patient-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.patient-table tr:hover {
+  background-color: #eef6ff;
+}
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.modal-content th, .modal-content td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+/*New*/
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", sans-serif;
+  margin-top: 15px;
+}
+.patient-table th, .patient-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+.patient-table th {
+  background-color: #003566;
+  color: #fff;
+  font-weight: 600;
+}
+.patient-table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+.patient-table tr:hover{
+  background-color: #d0e4ff;
+}
+.patient-table button {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.patient-table button.delete-btn {
+  background-color: #d9534f;
+  color: #fff;
+}
+.patient-table button.delete-btn:hover {
+  background-color: #c9302c;
+}
+.patient-table button.detail-btn {
+  background-color: #0275d8;
+  color: #fff;
+  margin-left:5px;
+}
+.patient-table button.detail-btn:hover {
+  background-color: #025aa5;
+}
+
+@media screen and (max-width: 700px) {
+  .patient-table th, .patient-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+  .patient-table button {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
